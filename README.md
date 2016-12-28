@@ -1,6 +1,6 @@
 # foursquare-stats
 
-A simple Perl and R solution to draw line graphs of your foursquare check-ins over the years.
+A simple Perl and R solution to draw line graphs of your [foursquare](http://www.foursquare.com) check-ins over the years.
 
 ![Example plot](https://raw.githubusercontent.com/stephwen/foursquare-stats/master/example/plot2.png)
 
