@@ -29,7 +29,8 @@ Obviously, one check-in does not equal one day spent in said country, but it's s
 
 The data source I used is the personal RSS feed which you can download here: https://foursquare.com/feeds/
 
-It contains the latitude and longitude as well as the date for each of your check-ins. To link a country to a latitude/longitude pair, I could have used the Google Maps Reverse Geocoding API, but the free version is limited in terms of number of requests, so instead I went to [geonames.org](http://geonames.org) and I downloaded a list of 15 000 cities with their geographical coordinates. (this file: http://download.geonames.org/export/dump/cities15000.zip)
+It contains the latitude and longitude as well as the date for each of your check-ins.
+To link a country to a latitude/longitude pair, I could have used the Google Maps Reverse Geocoding API, but the free version is limited in terms of number of requests, so instead I went to [geonames.org](http://geonames.org) and I downloaded a list of 15 000 cities with their geographical coordinates (this file: http://download.geonames.org/export/dump/cities15000.zip).
 For each of my check-ins, I consider that the country where the check-in was done is the country of the closest city from this list.
 Usually, this method will give accurate results, except if you've checked in at a place near a border, where the nearest city was on the other side of the border. 
 
@@ -96,8 +97,11 @@ close($in);
 
 You'll notice that I don't bother to use an RSS parsing module, I just use 2 regular expressions to catch the coordinates and the dates of each check-in. 
 This is obviously a quick and dirty solution, but unless you've checked in at a place called "41.454785 -12.18484" or "Sat, 24 Apr 10", it's enough.
+
 Then, for each of those coordinates, I look for the closest city. I use the euclidean distance.
-I use a hash called *%visitedPlaces*, so that if I checked in a the same place more than once, the script doesn't have to re-do the whole looking through-the-cities-list-to-find-the-closest-one process
+
+I use a hash called *%visitedPlaces*, so that if I checked in a the same place more than once, the script doesn't have to re-do the whole looking through-the-cities-list-to-find-the-closest-one process.
+
 I store the number of check-ins in a hash of hash called *%visitsByYearByCountry*. The first key is the year when the check-in took place, and the second key is the country where it took place. The value of the hash of hash is the total number of check-ins for that specific year in that specific country.
 
 And basically that's it. After that I just output my hash of hash as a TSV file.
@@ -108,6 +112,8 @@ The R script
 ----------------
 
 I just transform the data and I plot thanks to *ggplot2*. I'm using [directlabels](http://directlabels.r-forge.r-project.org/), which is great to add labels next to the lines of a graph.
-I thought about log-transforming the y-axis, since one country has a very large number of check-ins as compared to the others, but instead I chose to just draw 2 plots.
+
+I thought about log-transforming the y-axis, since one country has a very large number of check-ins as compared to the others, but instead I chose to just draw 2 different plots.
+
 You'll see that some of the x- and y limits are hardcoded in the calls to the ggplot function, so these should be adjusted.
 
