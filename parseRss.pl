@@ -102,5 +102,10 @@ close($out);
 if (!-f $outTableFile) { die("Error producing file $outTableFile\n"); }
 say "Launching R to draw the plots....";
 system("Rscript drawPlots.R checkinsByCountryByYear.tsv");
+say "Creating GIFs....................";
+system("convert -delay 120 plot1_*.png plot1.gif");
+system("convert -delay 120 plot2_*.png plot2.gif");
+system("rm plot1_*.png");
+system("rm plot2_*.png");
 say ("Done!");
 
