@@ -2,7 +2,7 @@
 
 A simple Perl and R solution to draw line graphs of your [foursquare](http://www.foursquare.com) check-ins over the years.
 
-![Example plot](https://raw.githubusercontent.com/stephwen/foursquare-stats/master/example/plot2.png)
+![Example plot](https://raw.githubusercontent.com/stephwen/foursquare-stats/master/example/plot2.gif)
 
 Pre-requisites
 =============
@@ -115,5 +115,5 @@ I just transform the data and I plot thanks to *ggplot2*. I'm using [directlabel
 
 I thought about log-transforming the y-axis, since one country has a very large number of check-ins as compared to the others, but instead I chose to just draw 2 different plots.
 
-You'll see that some of the x- and y limits are hardcoded in the calls to the ggplot function, so these should be adjusted.
+As of the end of 2017, I've also added a loop in the R plotting script, to create animated GIFs.
 
