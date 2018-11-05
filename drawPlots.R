@@ -32,7 +32,7 @@ dev.off()
 
 for (examinedYear in c((min(df$year)+1):(max(df$year)+1))) {
 	thisDF <- DF.t[DF.t$year<examinedYear,]
-	thisFileName<-paste0("/Users/steph/perl/foursquare-stats/plot2_", examinedYear, ".png")
+	thisFileName<-paste0("plot2_", examinedYear, ".png")
 
 	png(file=thisFileName, width = 1200, height = 900, units = "px",)
 
@@ -46,7 +46,7 @@ for (examinedYear in c((min(df$year)+1):(max(df$year)+1))) {
 
 for (examinedYear in c((min(df$year)+1):(max(df$year)+1))) {
 	thisDF <- DF.t[DF.t$year<examinedYear,]
-	thisFileName<-paste0("/Users/steph/perl/foursquare-stats/plot1_", examinedYear, ".png")
+	thisFileName<-paste0("plot1_", examinedYear, ".png")
 
 	png(file=thisFileName, width = 1200, height = 900, units = "px",)
 
